@@ -7,7 +7,7 @@ const router = Router();
 router.use('/contact', contactRouter);
 
 // Root endpoint
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.json({
     success: true,
     message: 'Portfolio API is running',
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 });
 
 // Health check
-router.get('/health', (req, res) => {
+router.get('/health', (_req, res) => {
   res.json({
     success: true,
     status: 'healthy',

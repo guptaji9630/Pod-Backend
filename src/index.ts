@@ -41,12 +41,22 @@ app.use('/api/', apiLimiter);
 app.use('/api', routes);
 
 // Root endpoint
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     success: true,
     message: 'Welcome to Portfolio API',
     version: '1.0.0',
     documentation: '/api',
+  });
+});
+
+// Health check endpoint for monitoring
+app.get('/health', (_req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: ENV.NODE_ENV,
   });
 });
 
